@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.home.HomeFragment">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="60dp"
+            android:layout_height="20dp"
+            android:src="@color/transparent" />
+
+        <androidx.cardview.widget.CardView
+
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginVertical="16dp"
+            android:layout_weight="5"
+            android:elevation="8dp"
+            app:cardCornerRadius="7.61dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:id="@+id/cv_search"
+                android:layout_height="match_parent"
+                android:cursorVisible="false"
+                android:drawableStart="@drawable/search"
+                android:focusableInTouchMode="false"
+                android:focusedSearchResultHighlightColor="@color/transparent"
+                android:fontFamily="@font/outfit_medium"
+                android:hint="Cari biji kopi disini"
+                android:outlineSpotShadowColor="@color/transparent"
+                android:paddingHorizontal="6dp"
+                android:shadowColor="@color/transparent"
+                android:textColor="@color/black"
+                android:textColorHint="@color/gray"
+                android:textSize="13sp" />
+        </androidx.cardview.widget.CardView>
+
+        <ImageView
+            android:id="@+id/iv_cart"
+            android:layout_width="60dp"
+            android:layout_height="20dp"
+            android:src="@drawable/cart" />
+
+    </LinearLayout>
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvCoffeeList"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="8dp"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        tools:listitem="@layout/item_coffee" />
+
+
+</LinearLayout>

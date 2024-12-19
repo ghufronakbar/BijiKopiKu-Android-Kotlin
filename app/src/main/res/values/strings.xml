@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">BijiKopiKu</string>
+    <string name="title_home">Beranda</string>
+    <string name="slogan">buy coffee, get happiness</string>
+    <string name="title_dashboard">Riwayat</string>
+    <string name="title_notifications">Profiltheme</string>
+</resources>
