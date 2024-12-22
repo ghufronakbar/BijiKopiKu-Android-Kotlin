@@ -18,13 +18,10 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        val actionBar: ActionBar? = supportActionBar
-
-        actionBar?.setDisplayHomeAsUpEnabled(true)
-
-//        supportActionBar?.hide()
+        supportActionBar?.hide()
+        supportActionBar?.setBackgroundDrawable(null)
+        super.onCreate(savedInstanceState)
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)

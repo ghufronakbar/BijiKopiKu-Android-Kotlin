@@ -5,7 +5,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:paddingTop="60dp"
     tools:context=".ui.history.HistoryFragment">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:fontFamily="@font/outfit_semibold"
+        android:text="Riwayat"
+        android:textColor="@color/primary"
+        android:textSize="32sp" />
 
 
     <androidx.recyclerview.widget.RecyclerView

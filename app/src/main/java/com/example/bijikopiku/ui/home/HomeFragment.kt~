@@ -9,7 +9,6 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
-import com.example.bijikopiku.CartActivity
 import com.example.bijikopiku.LoginActivity
 import com.example.bijikopiku.SearchActivity
 import com.example.bijikopiku.adapter.CoffeeAdapter
@@ -59,7 +58,7 @@ class HomeFragment : Fragment() {
 
     private fun onCartClick(){
         val intent = Intent()
-        intent.setClass(requireContext(), CartActivity::class.java)
+        intent.setClass(requireContext(), LoginActivity::class.java)
         startActivity(intent)
     }
 

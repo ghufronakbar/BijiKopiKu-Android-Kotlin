@@ -5,8 +5,10 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingTop="60dp"
     android:scrollbars="vertical"
     tools:context=".ui.profile.ProfileFragment">
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -14,6 +16,15 @@
         android:layout_centerInParent="true"
         android:gravity="center"
         android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/outfit_semibold"
+            android:text="Akun Saya"
+            android:textColor="@color/primary"
+            android:textSize="32sp" />
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
@@ -35,12 +46,13 @@
                     android:id="@+id/displayPicture"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
+                    android:layout_gravity="center_horizontal"
                     android:layout_marginVertical="20dp"
                     android:scaleType="centerCrop"
                     android:src="@drawable/profile"
                     app:layout_constraintDimensionRatio="1:1"
-                    android:layout_gravity="center_horizontal"
                     app:shapeAppearance="@style/FullRoundedImage" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
