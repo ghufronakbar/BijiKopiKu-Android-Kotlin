@@ -1,19 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/main"
-    tools:context=".LoginActivity">
+    tools:context=".ui.LoginActivity">
+
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/bg" />
 
     <androidx.cardview.widget.CardView
-        android:layout_width="700dp"
-        android:layout_height="1000dp"
-        android:layout_marginTop="150dp"
-        app:cardCornerRadius="150dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginBottom="20dp"
+        app:cardCornerRadius="60dp">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -45,7 +51,7 @@
 
 
         <LinearLayout
-            android:layout_width="393dp"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="70dp"
             android:orientation="vertical">
@@ -55,25 +61,25 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:layout_marginBottom="20dp"
                 android:fontFamily="@font/outfit_semibold"
                 android:text="Login"
                 android:textColor="@color/black"
-                android:layout_marginBottom="20dp"
                 android:textSize="40sp" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_marginHorizontal="24dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:layout_marginHorizontal="24dp"
                 android:layout_marginTop="-5dp"
                 android:hint=" Email"
                 app:boxBackgroundColor="#00FFFFFF"
                 app:boxBackgroundMode="outline"
                 app:boxCornerRadiusBottomEnd="20dp"
                 app:boxCornerRadiusTopStart="20dp"
-                app:boxStrokeColor="#71CEB8"
-                app:hintTextColor="@color/green"
+                app:boxStrokeColor="@color/primary"
+                app:hintTextColor="@color/gray"
                 app:placeholderTextColor="@color/gray">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -88,16 +94,17 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_marginHorizontal="24dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:layout_marginHorizontal="24dp"
                 android:layout_marginTop="15dp"
                 android:hint=" Password"
                 app:boxBackgroundColor="@color/white"
                 app:boxBackgroundMode="outline"
                 app:boxCornerRadiusBottomEnd="20dp"
                 app:boxCornerRadiusTopStart="20dp"
-                app:boxStrokeColor="@color/gray"
+                app:boxStrokeColor="@color/primary"
+                app:hintTextColor="@color/gray"
                 app:passwordToggleEnabled="true">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -117,27 +124,6 @@
                 android:layout_marginVertical="20dp"
                 android:orientation="horizontal">
 
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/btnGoRegister"
-                    android:layout_width="0dp"
-                    android:layout_height="42dp"
-                    android:layout_marginHorizontal="5dp"
-                    android:layout_marginVertical="12dp"
-                    android:layout_weight="1"
-                    app:cardCornerRadius="10dp"
-
-                    app:cardElevation="5dp">
-
-                    <TextView
-                        android:id="@+id/textView50"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:fontFamily="@font/outfit_medium"
-                        android:text="Register"
-                        android:textColor="@color/primary" />
-
-                </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/btnLogin"
@@ -148,7 +134,6 @@
                     android:layout_weight="1"
                     app:cardBackgroundColor="@color/primary"
                     app:cardCornerRadius="10dp"
-
                     app:cardElevation="5dp">
 
                     <TextView
@@ -169,4 +154,4 @@
     </androidx.cardview.widget.CardView>
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>

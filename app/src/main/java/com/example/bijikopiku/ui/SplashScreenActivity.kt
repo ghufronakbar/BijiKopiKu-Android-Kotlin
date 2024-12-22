@@ -1,42 +1,34 @@
-package com.example.bijikopiku
+package com.example.bijikopiku.ui
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.example.bijikopiku.databinding.ActivityLoginBinding
+import com.example.bijikopiku.R
 
-class LoginActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityLoginBinding
-
+class SplashScreenActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         supportActionBar?.hide()
-
-        binding = ActivityLoginBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-
-        binding.btnGoRegister.setOnClickListener {
-            val intent = Intent()
-            intent.setClass(this, RegisterActivity::class.java)
-            startActivity(intent)
-        }
-
-        binding.btnLogin.setOnClickListener {
-            handleLogin()
-        }
-
-        ViewCompat.setOnApplyWindowInsetsListener(binding.main) { v, insets ->
+        setContentView(R.layout.activity_splash_screen)
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+        Handler(Looper.getMainLooper()).postDelayed({
+            handleSplashScreen()
+        }, 2000)
     }
 
-    private fun handleLogin () {
+    private fun handleSplashScreen() {
         val intent = Intent()
         intent.setClass(this, MainActivity::class.java)
         startActivity(intent)

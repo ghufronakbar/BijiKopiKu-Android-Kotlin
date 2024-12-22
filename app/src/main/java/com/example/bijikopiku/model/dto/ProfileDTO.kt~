@@ -1,0 +1,4 @@
+package com.example.bijikopiku.model.dto
+
+class ProfileDTO {
+}

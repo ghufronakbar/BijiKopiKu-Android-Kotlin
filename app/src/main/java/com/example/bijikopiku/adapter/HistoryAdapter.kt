@@ -7,9 +7,10 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.bijikopiku.R
-import com.example.bijikopiku.model.History
+import com.example.bijikopiku.model.response.History
+import com.example.bijikopiku.model.response.Order
 
-class HistoryAdapter(private val historyList: List<History>) :
+class HistoryAdapter(private val historyList: List<Order>) :
     RecyclerView.Adapter<HistoryAdapter.CoffeeViewHolder>() {
 
     inner class CoffeeViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -27,9 +28,16 @@ class HistoryAdapter(private val historyList: List<History>) :
 
     override fun onBindViewHolder(holder: CoffeeViewHolder, position: Int) {
         val coffee = historyList[position]
+        var name = ""
+        if(coffee.orderItems.size > 1) {
+            for (i in 0 until coffee.orderItems.size) {
+                name += coffee.orderItems[i].coffee.name + ", "
+            }
+            holder.hisName.text = name
+        }
         holder.hisImage.setImageResource(R.drawable.bg)
         holder.hisId.text = coffee.id
-        holder.hisName.text = coffee.name
+        holder.hisName.text = name
         holder.hisTotal.text = "Rp: ${coffee.total}"
         holder.hisStatus.text = coffee.status
     }

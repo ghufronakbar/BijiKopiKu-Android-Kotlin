@@ -59,9 +59,6 @@ class CartAdapter(
                 historyList.removeAt(position)
                 notifyItemRemoved(position)
                 notifyItemRangeChanged(position, historyList.size - position)
-                if (historyList.isEmpty()) {
-                    onEmptyHistory()
-                }
             } else {
                 onDecrementClick(position)
                 val updatedItem = CartItem(coffee.id, coffee.quantity)

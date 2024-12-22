@@ -38,7 +38,7 @@ class CoffeeAdapter(private val historyList: List<Coffee>, private val cartManag
         holder.addToCart.setOnClickListener {
             Toast.makeText(holder.itemView.context, "Berhasil menambahkan ${coffee.name} ke keranjang", Toast.LENGTH_SHORT).show()
             val cartItem = CartItem(coffee.id, 1)
-            cartManager.addToCartOrUpdateQuantity(cartItem)
+            cartManager.addToCart(cartItem)
         }
     }
 
