@@ -65,6 +65,7 @@
                 android:layout_weight="1" />
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/badgeStatus"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:cardBackgroundColor="@color/red"

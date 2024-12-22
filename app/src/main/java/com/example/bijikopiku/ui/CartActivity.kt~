@@ -1,6 +1,7 @@
 package com.example.bijikopiku.ui
 
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
@@ -19,8 +20,11 @@ import com.example.bijikopiku.databinding.ActivityCartBinding
 import com.example.bijikopiku.helper.CartManager
 import com.example.bijikopiku.model.dto.CartDTO
 import com.example.bijikopiku.model.dto.CartItem
+import com.example.bijikopiku.model.dto.CheckoutDTO
+import com.example.bijikopiku.model.dto.CheckoutItem
 import com.example.bijikopiku.model.response.ApiRes
 import com.example.bijikopiku.model.response.Coffee
+import com.example.bijikopiku.model.response.Order
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -131,6 +135,8 @@ class CartActivity : AppCompatActivity() {
                 doCheckout()
             }
         } else {
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
             return
         }
     }
@@ -148,7 +154,45 @@ class CartActivity : AppCompatActivity() {
     }
 
     private fun doCheckout() {
-        //  TODO("Not yet implemented")
-        Toast.makeText(this, "Checkout", Toast.LENGTH_SHORT).show()
+
+        val cart: List<CartItem> = cartManager.getCart()
+        val checkoutItems = cart.map {
+            CheckoutItem(it.id, it.quantity)
+        }
+        val body = CheckoutDTO(orderItems = checkoutItems)
+        val call = apiInterface.createCheckout(body)
+        call.enqueue(object : Callback<ApiRes<Order>> {
+            override fun onResponse(
+                call: Call<ApiRes<Order>>,
+                response: Response<ApiRes<Order>>
+            ) {
+                if (response.isSuccessful) {
+                    val data = response.body()
+                    if (data?.success == true) {
+                        Toast.makeText(this@CartActivity, data.message, Toast.LENGTH_SHORT)
+                            .show()
+                        cartManager.clearCart()
+                        finish()
+                    } else {
+                        Toast.makeText(this@CartActivity, data?.message, Toast.LENGTH_SHORT)
+                            .show()
+                    }
+                } else {
+                    Log.e("Error", response.errorBody().toString())
+                    Toast.makeText(
+                        this@CartActivity,
+                        "Terjadi kesalahan",
+                        Toast.LENGTH_SHORT
+                    )
+                        .show()
+                }
+            }
+
+            override fun onFailure(call: Call<ApiRes<Order>>, t: Throwable) {
+                Log.e("Error", t.message.toString())
+                Toast.makeText(this@CartActivity, "Terjadi kesalahan", Toast.LENGTH_SHORT)
+                    .show()
+            }
+        })
     }
 }

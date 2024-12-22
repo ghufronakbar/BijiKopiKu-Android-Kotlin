@@ -13,10 +13,8 @@ import com.example.bijikopiku.model.response.User
 import okhttp3.MultipartBody
 import retrofit2.Call
 import retrofit2.http.Body
-import retrofit2.http.DELETE
 import retrofit2.http.GET
 import retrofit2.http.Multipart
-import retrofit2.http.PATCH
 import retrofit2.http.POST
 import retrofit2.http.PUT
 import retrofit2.http.Part
@@ -45,7 +43,7 @@ interface ApiInterface {
     fun getDetailOrder(@Path("id") orderId: String): Call<ApiRes<Order>>
 
     @POST("orders")
-    fun postCheckout(@Body request: CheckoutDTO): Call<ApiRes<Order>>
+    fun createCheckout(@Body request: CheckoutDTO): Call<ApiRes<Order>>
 
     @Multipart
     @POST("orders/{id}/pay")

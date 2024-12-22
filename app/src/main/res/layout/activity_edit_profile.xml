@@ -157,7 +157,7 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <androidx.cardview.widget.CardView
-                    android:id="@+id/btnGoEditProfile"
+                    android:id="@+id/btnSaveProfile"
                     android:layout_width="match_parent"
                     android:layout_height="42dp"
                     android:layout_marginTop="20dp"

@@ -80,6 +80,7 @@ class HistoryFragment : Fragment() {
                 if (isAdded && view != null) {
                     if (response.isSuccessful) {
                         val data = response.body()
+                        Log.d("RESULT_ORDER", data.toString())
                         if (data?.success == true) {
                             historyList = data.data
 
@@ -90,9 +91,10 @@ class HistoryFragment : Fragment() {
                             }
 
                             binding.tvInformation.visibility = View.GONE
+                            binding.rvHistoryList.visibility = View.VISIBLE
 
                             val adapter = HistoryAdapter(historyList)
-                            binding.rvHistoryList.layoutManager = GridLayoutManager(context, 2)
+                            binding.rvHistoryList.layoutManager = GridLayoutManager(context, 1)
                             binding.rvHistoryList.adapter = adapter
                         } else {
                             Toast.makeText(requireContext(), data?.message, Toast.LENGTH_SHORT)

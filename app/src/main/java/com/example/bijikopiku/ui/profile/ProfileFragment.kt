@@ -1,6 +1,7 @@
 package com.example.bijikopiku.ui.profile
 
 import android.content.Context
+import android.content.Context.MODE_PRIVATE
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
@@ -57,6 +58,13 @@ class ProfileFragment : Fragment() {
             val intent = Intent()
             intent.setClass(requireContext(), RegisterActivity::class.java)
             startActivity(intent)
+        }
+
+        binding.btnGoLogout.setOnClickListener {
+            handleLogout()
+            val intent = Intent(requireContext(), requireActivity().javaClass)
+            startActivity(intent)
+            requireActivity().finish()
         }
 
 
@@ -124,5 +132,18 @@ class ProfileFragment : Fragment() {
                 }
             }
         })
+    }
+
+    private fun handleLogout() {
+        val sharedPref = requireActivity().getSharedPreferences("my_preferences", MODE_PRIVATE)
+        val editor = sharedPref.edit()
+        editor.clear()
+        editor.apply()
+
+        RetrofitClient.retrofit = null
+        val intent = Intent(activity, LoginActivity::class.java)
+        startActivity(intent)
+        Toast.makeText(requireContext(), "Berhasil logout", Toast.LENGTH_SHORT).show()
+        activity?.finish()
     }
 }
