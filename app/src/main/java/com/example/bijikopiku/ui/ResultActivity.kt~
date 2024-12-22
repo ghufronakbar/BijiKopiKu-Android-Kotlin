@@ -77,7 +77,7 @@ class ResultActivity : AppCompatActivity() {
                     if (data?.success == true) {
                         coffeeList = data.data
 
-                        val adapter = CoffeeAdapter(coffeeList, cartManager, this@ResultActivity)
+                        val adapter = CoffeeAdapter(coffeeList, cartManager)
                         binding.rvResultList.layoutManager =
                             GridLayoutManager(this@ResultActivity, 2)
                         binding.rvResultList.adapter = adapter

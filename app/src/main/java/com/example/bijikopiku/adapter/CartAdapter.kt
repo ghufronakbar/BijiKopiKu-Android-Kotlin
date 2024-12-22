@@ -1,15 +1,19 @@
 package com.example.bijikopiku.adapter
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.bijikopiku.R
 import com.example.bijikopiku.helper.CartManager
 import com.example.bijikopiku.model.dto.CartItem
 import com.example.bijikopiku.model.response.Coffee
+import com.example.bijikopiku.ui.DetailCoffeeActivity
 
 class CartAdapter(
     private val historyList: MutableList<Coffee>,
@@ -28,6 +32,7 @@ class CartAdapter(
         val amount: TextView = itemView.findViewById(R.id.tvAmount)
         val increment: ImageView = itemView.findViewById(R.id.ivIncrement)
         val decrement: ImageView = itemView.findViewById(R.id.ivDecrement)
+        val itemCart: CardView = itemView.findViewById(R.id.itemCart)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CartViewHolder {
@@ -37,11 +42,23 @@ class CartAdapter(
 
     override fun onBindViewHolder(holder: CartViewHolder, position: Int) {
         val coffee = historyList[position]
-        holder.coffeeImage.setImageResource(R.drawable.bg)
         holder.coffeeName.text = coffee.name
         holder.coffeePrice.text = "Rp: ${coffee.price}"
         holder.coffeeType.text = coffee.type
         holder.amount.text = coffee.quantity.toString()
+
+        Glide.with(holder.itemView.context)
+            .load(coffee.picture)
+            .placeholder(R.drawable.placeholder)
+            .error(R.drawable.placeholder)
+            .into(holder.coffeeImage)
+
+        holder.itemCart.setOnClickListener {
+            val intent = Intent()
+            intent.setClass(holder.itemView.context, DetailCoffeeActivity::class.java)
+            intent.putExtra("id", coffee.id)
+            holder.itemView.context.startActivity(intent)
+        }
 
         holder.increment.setOnClickListener {
             onIncrementClick(position)

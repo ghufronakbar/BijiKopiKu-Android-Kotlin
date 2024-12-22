@@ -87,7 +87,7 @@ class HomeFragment : Fragment() {
                         if (data?.success == true) {
                             coffeeList = data.data
 
-                            val adapter = CoffeeAdapter(coffeeList, cartManager, requireContext())
+                            val adapter = CoffeeAdapter(coffeeList, cartManager, this@HomeFragment)
                             binding.rvCoffeeList.layoutManager = GridLayoutManager(context, 2)
                             binding.rvCoffeeList.adapter = adapter
                         } else {

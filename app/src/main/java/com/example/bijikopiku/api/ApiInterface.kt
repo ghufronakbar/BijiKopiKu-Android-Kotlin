@@ -15,6 +15,7 @@ import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.Multipart
+import retrofit2.http.PATCH
 import retrofit2.http.POST
 import retrofit2.http.PUT
 import retrofit2.http.Part
@@ -44,6 +45,9 @@ interface ApiInterface {
 
     @POST("orders")
     fun createCheckout(@Body request: CheckoutDTO): Call<ApiRes<Order>>
+
+    @PATCH("orders/{id}")
+    fun cancelOrder(@Path("id") orderId: String): Call<ApiRes<Order>>
 
     @Multipart
     @POST("orders/{id}/pay")

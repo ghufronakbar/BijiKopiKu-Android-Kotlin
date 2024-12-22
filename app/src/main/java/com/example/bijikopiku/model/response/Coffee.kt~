@@ -13,7 +13,5 @@ data class Coffee(
     val createdAt: String,
     val updatedAt: String,
     var quantity: Int,
-    val sold: Int,
-    val picture: String?,
-    val desc: String
+    val sold: Int
 )

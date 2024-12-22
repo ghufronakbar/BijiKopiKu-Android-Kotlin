@@ -161,6 +161,7 @@ class CartActivity : AppCompatActivity() {
         }
         val body = CheckoutDTO(orderItems = checkoutItems)
         val call = apiInterface.createCheckout(body)
+        Toast.makeText(this, "Harap tunggu sebentar", Toast.LENGTH_SHORT).show()
         call.enqueue(object : Callback<ApiRes<Order>> {
             override fun onResponse(
                 call: Call<ApiRes<Order>>,
@@ -172,7 +173,11 @@ class CartActivity : AppCompatActivity() {
                         Toast.makeText(this@CartActivity, "Checkout berhasil", Toast.LENGTH_SHORT)
                             .show()
                         cartManager.clearCart()
+                        val intent = Intent(this@CartActivity, DetailOrderActivity::class.java)
+                        intent.putExtra("id", data.data.id)
+                        startActivity(intent)
                         finish()
+
                     } else {
                         Toast.makeText(this@CartActivity, data?.message, Toast.LENGTH_SHORT)
                             .show()
