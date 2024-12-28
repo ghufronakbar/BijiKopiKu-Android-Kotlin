@@ -93,14 +93,14 @@ class CartAdapter(
     }
 
     private fun onIncrementClick(position: Int) {
-        val coffee = historyList[position]
+        var coffee = historyList[position]
         val newAmount = coffee.quantity + 1
         coffee.quantity = newAmount
         notifyItemChanged(position)
     }
 
     private fun onDecrementClick(position: Int) {
-        val coffee = historyList[position]
+        var coffee = historyList[position]
         val newAmount = coffee.quantity - 1
         coffee.quantity = newAmount
         notifyItemChanged(position)

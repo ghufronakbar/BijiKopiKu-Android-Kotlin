@@ -20,6 +20,7 @@ import com.example.bijikopiku.adapter.DetailHistoryAdapter
 import com.example.bijikopiku.api.ApiInterface
 import com.example.bijikopiku.api.RetrofitClient
 import com.example.bijikopiku.databinding.ActivityDetailOrderBinding
+import com.example.bijikopiku.helper.Helper
 import com.example.bijikopiku.model.response.ApiRes
 import com.example.bijikopiku.model.response.Order
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
@@ -101,7 +102,7 @@ class DetailOrderActivity : AppCompatActivity() {
                         // Set data pesanan ke tampilan
                         binding.tvOrderId.text = "#${order.id}"
                         binding.tvTotal.text = "Rp ${order.total}"
-                        binding.tvDate.text = order.createdAt
+                        binding.tvDate.text = Helper().formatDate( order.createdAt)
                         binding.tvStatus.text = order.status
 
                         // Atur warna berdasarkan status
@@ -282,7 +283,7 @@ class DetailOrderActivity : AppCompatActivity() {
 
     private fun uploadPayment(file: File) {
         val requestFile = file.asRequestBody("image/jpeg".toMediaTypeOrNull())
-        val body = MultipartBody.Part.createFormData("image", file.name, requestFile)
+        val body = MultipartBody.Part.createFormData("picture", file.name, requestFile)
 
         val call = apiInterface.postPayment(orderId, body)
         call.enqueue(object : Callback<ApiRes<Order>> {

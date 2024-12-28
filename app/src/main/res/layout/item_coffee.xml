@@ -35,6 +35,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/outfit_semibold"
                 android:text="Coffee Name"
+                android:lines="1"
                 android:textColor="@android:color/black"
                 android:textSize="16sp" />
 
@@ -52,6 +53,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/outfit_medium"
                 android:text="Coffee Name"
+                android:lines="1"
                 android:textColor="@android:color/black"
                 android:textSize="16sp" />
 

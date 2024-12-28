@@ -64,12 +64,7 @@ class CoffeeAdapter(
                 "Berhasil menambahkan ${coffee.name} ke keranjang",
                 Toast.LENGTH_SHORT
             ).show()
-            val checkCart = cartManager.findItemById(coffee.id)
-            var quantity = 1
-            if (checkCart != null) {
-                quantity = checkCart.quantity + 1
-            }
-            val cartItem = CartItem(coffee.id, quantity)
+            val cartItem = CartItem(coffee.id, 1)
             cartManager.addToCartOrUpdateQuantity(cartItem)
         }
     }

@@ -129,7 +129,12 @@ class DetailCoffeeActivity : AppCompatActivity() {
     }
 
     private fun addToCart(id: String) {
-        val cartItem = CartItem(id, 1)
+        val checkCart = cartManager.findItemById(id)
+        var quantity = 1
+        if (checkCart != null) {
+            quantity = checkCart.quantity + 1
+        }
+        val cartItem = CartItem(id, quantity)
         cartManager.addToCartOrUpdateQuantity(cartItem)
         Toast.makeText(this, "Berhasil ditambahkan ke keranjang", Toast.LENGTH_SHORT).show()
         finish()

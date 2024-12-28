@@ -85,6 +85,8 @@ class CartActivity : AppCompatActivity() {
                 if (response.isSuccessful) {
                     val data = response.body()
                     if (data?.success == true) {
+                        val newCart = data.data.map { CartItem(it.id, it.quantity) }
+                        cartManager.replaceCart(newCart)
                         if (data.data.isEmpty()) {
                             handleEmptyData()
                             return

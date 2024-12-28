@@ -178,6 +178,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:fontFamily="@font/outfit_medium"
+            android:layout_marginVertical="12dp"
             android:text="Masukkan Ke Keranjang"
             android:textColor="@color/white" />
     </androidx.cardview.widget.CardView>

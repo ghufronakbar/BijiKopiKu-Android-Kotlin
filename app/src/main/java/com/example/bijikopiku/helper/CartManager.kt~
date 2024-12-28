@@ -57,11 +57,6 @@ class CartManager(context: Context) {
         saveCart(updatedCart)
     }
 
-    fun findItemById(id: String): CartItem? {
-        val currentCart = getCart()
-        return currentCart.find { it.id == id }
-    }
-
     fun clearCart() {
         sharedPreferences.edit().remove("carts").apply()
     }
