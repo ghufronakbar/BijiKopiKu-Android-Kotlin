@@ -14,7 +14,7 @@ object RetrofitClient {
     fun getClient(context: Context): Retrofit {
         val preferences: SharedPreferences = context.getSharedPreferences("my_preferences", Context.MODE_PRIVATE)
         val token = preferences.getString("ACCESS_TOKEN", null)
-        val baseUrl = "https://bijikopiku.vercel.app/api/"
+        val baseUrl = "https://bijikopiku.vercel.app/api/user/"
 
         val httpClient = OkHttpClient.Builder()
 

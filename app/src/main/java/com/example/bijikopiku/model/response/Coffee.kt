@@ -15,5 +15,6 @@ data class Coffee(
     var quantity: Int,
     val sold: Int,
     val picture: String?,
-    val desc: String
+    val desc: String,
+    val percentageMatchRate: Double?
 )

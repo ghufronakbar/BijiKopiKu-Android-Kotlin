@@ -31,6 +31,7 @@ class CoffeeAdapter(
         val coffeeType: TextView = itemView.findViewById(R.id.tvCoffeeType)
         val addToCart: ImageView = itemView.findViewById(R.id.addToCart)
         val itemCoffee: CardView = itemView.findViewById(R.id.itemCoffee)
+        val matchRate: TextView = itemView.findViewById(R.id.tvMatchRate)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CoffeeViewHolder {
@@ -56,6 +57,13 @@ class CoffeeAdapter(
             intent.setClass(holder.itemView.context, DetailCoffeeActivity::class.java)
             intent.putExtra("id", coffee.id)
             holder.itemView.context.startActivity(intent)
+        }
+
+        if (coffee.percentageMatchRate != null) {
+            holder.matchRate.text = "Tingkat kecocokan: ${coffee.percentageMatchRate}%"
+            holder.matchRate.visibility = View.VISIBLE
+        } else {
+            holder.matchRate.visibility = View.GONE
         }
 
         holder.addToCart.setOnClickListener {

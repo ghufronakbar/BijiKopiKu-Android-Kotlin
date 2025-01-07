@@ -34,8 +34,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/outfit_semibold"
-                android:text="Coffee Name"
                 android:lines="1"
+                android:text="Coffee Name"
                 android:textColor="@android:color/black"
                 android:textSize="16sp" />
 
@@ -52,8 +52,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/outfit_medium"
-                android:text="Coffee Name"
                 android:lines="1"
+                android:text="Coffee Name"
                 android:textColor="@android:color/black"
                 android:textSize="16sp" />
 
@@ -90,5 +90,15 @@
                 android:textSize="14sp" />
 
         </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvMatchRate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/outfit_regular"
+            android:text="Tingkat Kecocokan: 58%"
+            android:textColor="@color/gray"
+            android:textSize="12sp"
+            android:visibility="gone" />
     </LinearLayout>
 </androidx.cardview.widget.CardView>
